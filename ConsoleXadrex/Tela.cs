@@ -68,10 +68,10 @@ namespace ConsoleXadrex
                 ConsoleColor aux = Console.ForegroundColor;
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("\nXEQUEMATE !!");
-                Console.WriteLine("Vencedor jogar: "+ partida.JogadorAtual);
+                Console.WriteLine("Vencedor jogar: " + partida.JogadorAtual);
                 Console.ForegroundColor = aux;
             }
-            
+
         }
 
         public static void ImprimirPecasCapturadas(PartidaXadrez partida)
@@ -100,17 +100,8 @@ namespace ConsoleXadrex
         public static PosicaoXadrez LerPosicaoXadrez()
         {
             string s = Console.ReadLine();
-            char coluna = 'a';
-            int linha = 0;
-            try
-            {
-                coluna = s[1];
-                linha = int.Parse(s[0].ToString());
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
+            char coluna = s[1];
+            int linha = int.Parse(s[0].ToString());
             return new PosicaoXadrez(linha, coluna);
         }
 

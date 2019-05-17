@@ -15,7 +15,7 @@ namespace xadrez
 
         public override bool[,] MovimentosPossiveis()
         {
-            bool[,] matriz = new bool[8, 8];
+            bool[,] matriz = new bool[Tabuleiro.Linhas, Tabuleiro.Colunas];
             Posicao tempPosicao = new Posicao(Posicao.Linha, Posicao.Coluna);
 
             // N

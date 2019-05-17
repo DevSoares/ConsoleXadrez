@@ -17,42 +17,42 @@ namespace xadrez
             bool[,] matriz = new bool[Tabuleiro.Linhas, Tabuleiro.Colunas];
             Posicao posicao = new Posicao(0, 0);
             posicao.SetPosicao(Posicao.Linha - 1, Posicao.Coluna - 2);
-            if (Tabuleiro.PosicaoValida(posicao) && PodeMover(Posicao))
+            if (Tabuleiro.PosicaoValida(posicao) && PodeMover(posicao))
             {
                 matriz[posicao.Linha, posicao.Coluna] = true;
             }
             posicao.SetPosicao(Posicao.Linha - 2, Posicao.Coluna - 1);
-            if (Tabuleiro.PosicaoValida(posicao) && PodeMover(Posicao))
+            if (Tabuleiro.PosicaoValida(posicao) && PodeMover(posicao))
             {
                 matriz[posicao.Linha, posicao.Coluna] = true;
             }
             posicao.SetPosicao(Posicao.Linha - 2, Posicao.Coluna + 1);
-            if (Tabuleiro.PosicaoValida(posicao) && PodeMover(Posicao))
+            if (Tabuleiro.PosicaoValida(posicao) && PodeMover(posicao))
             {
                 matriz[posicao.Linha, posicao.Coluna] = true;
             }
             posicao.SetPosicao(Posicao.Linha - 1, Posicao.Coluna + 2);
-            if (Tabuleiro.PosicaoValida(posicao) && PodeMover(Posicao))
+            if (Tabuleiro.PosicaoValida(posicao) && PodeMover(posicao))
             {
                 matriz[posicao.Linha, posicao.Coluna] = true;
             }
             posicao.SetPosicao(Posicao.Linha + 1, Posicao.Coluna + 2);
-            if (Tabuleiro.PosicaoValida(posicao) && PodeMover(Posicao))
+            if (Tabuleiro.PosicaoValida(posicao) && PodeMover(posicao))
             {
                 matriz[posicao.Linha, posicao.Coluna] = true;
             }
             posicao.SetPosicao(Posicao.Linha + 2, Posicao.Coluna + 1);
-            if (Tabuleiro.PosicaoValida(posicao) && PodeMover(Posicao))
+            if (Tabuleiro.PosicaoValida(posicao) && PodeMover(posicao))
             {
                 matriz[posicao.Linha, posicao.Coluna] = true;
             }
             posicao.SetPosicao(Posicao.Linha + 2, Posicao.Coluna - 1);
-            if (Tabuleiro.PosicaoValida(posicao) && PodeMover(Posicao))
+            if (Tabuleiro.PosicaoValida(posicao) && PodeMover(posicao))
             {
                 matriz[posicao.Linha, posicao.Coluna] = true;
             }
             posicao.SetPosicao(Posicao.Linha + 1, Posicao.Coluna - 2);
-            if (Tabuleiro.PosicaoValida(posicao) && PodeMover(Posicao))
+            if (Tabuleiro.PosicaoValida(posicao) && PodeMover(posicao))
             {
                 matriz[posicao.Linha, posicao.Coluna] = true;
             }

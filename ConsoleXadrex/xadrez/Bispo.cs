@@ -26,7 +26,7 @@ namespace xadrez
                 {
                     break;
                 }
-                posicao.SetPosicao(posicao.Linha--, posicao.Coluna--);
+                posicao.SetPosicao(posicao.Linha - 1, posicao.Coluna - 1);
             }
 
             // NE
@@ -38,7 +38,7 @@ namespace xadrez
                 {
                     break;
                 }
-                posicao.SetPosicao(posicao.Linha--, posicao.Coluna++);
+                posicao.SetPosicao(posicao.Linha - 1, posicao.Coluna + 1);
             }
 
             // SE
@@ -50,7 +50,7 @@ namespace xadrez
                 {
                     break;
                 }
-                posicao.SetPosicao(posicao.Linha++, posicao.Coluna++);
+                posicao.SetPosicao(posicao.Linha + 1, posicao.Coluna + 1);
             }
 
             // SW
@@ -62,7 +62,7 @@ namespace xadrez
                 {
                     break;
                 }
-                posicao.SetPosicao(posicao.Linha++, posicao.Coluna--);
+                posicao.SetPosicao(posicao.Linha + 1, posicao.Coluna - 1);
             }
             return matriz;
         }

@@ -41,12 +41,12 @@ namespace xadrez
                     matriz[tempPos.Linha, tempPos.Coluna] = true;
                 }
                 tempPos.SetPosicao(Posicao.Linha - 1, Posicao.Coluna - 1);
-                if (Tabuleiro.PosicaoValida(tempPos) && Livre(tempPos))
+                if (Tabuleiro.PosicaoValida(tempPos) && ExisteInimigo(tempPos))
                 {
                     matriz[tempPos.Linha, tempPos.Coluna] = true;
                 }
                 tempPos.SetPosicao(Posicao.Linha - 1, Posicao.Coluna + 1);
-                if (Tabuleiro.PosicaoValida(tempPos) && Livre(tempPos))
+                if (Tabuleiro.PosicaoValida(tempPos) && ExisteInimigo(tempPos))
                 {
                     matriz[tempPos.Linha, tempPos.Coluna] = true;
                 }
@@ -64,12 +64,12 @@ namespace xadrez
                     matriz[tempPos.Linha, tempPos.Coluna] = true;
                 }
                 tempPos.SetPosicao(Posicao.Linha + 1, Posicao.Coluna - 1);
-                if (Tabuleiro.PosicaoValida(tempPos) && Livre(tempPos))
+                if (Tabuleiro.PosicaoValida(tempPos) && ExisteInimigo(tempPos))
                 {
                     matriz[tempPos.Linha, tempPos.Coluna] = true;
                 }
                 tempPos.SetPosicao(Posicao.Linha + 1, Posicao.Coluna + 1);
-                if (Tabuleiro.PosicaoValida(tempPos) && Livre(tempPos))
+                if (Tabuleiro.PosicaoValida(tempPos) && ExisteInimigo(tempPos))
                 {
                     matriz[tempPos.Linha, tempPos.Coluna] = true;
                 }
