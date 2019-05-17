@@ -33,8 +33,15 @@ namespace xadrez
                 throw new TabuleiroException("\nPara de pensar com a bunda!!\nVocê não pode se colocar em Xeque!!");
             }
             Xeque = (EstaEmXeque(Adversario(JogadorAtual))) ? true : false;
-            Turno++;
-            TrocaJogador();
+            if (XequeMate(Adversario(JogadorAtual)))
+            {
+                Terminada = true;
+            }
+            else
+            {                
+                Turno++;
+                TrocaJogador();
+            }
         }
 
         private void TrocaJogador()
@@ -159,6 +166,34 @@ namespace xadrez
                 }
             }
             return false;
+        }
+
+        public bool XequeMate(Cor cor)
+        {
+            if (!EstaEmXeque(cor))
+            {
+                return false;
+            }
+            foreach(Peca peca in GetPecasEmJogo(cor))
+            {
+                bool[,] tempMatriz = peca.MovimentosPossiveis();
+                for(int i = 0; i<Tabuleiro.Linhas; i++)
+                {
+                    for(int j= 0;j<Tabuleiro.Colunas; j++)
+                    {
+                        if (tempMatriz[i, j])
+                        {
+                            Posicao origem = peca.Posicao;
+                            Posicao destino = new Posicao(i, j);
+                            Peca pecaCapturada = ExecutarMovimento(origem, destino);
+                            bool testeXeque = EstaEmXeque(cor);
+                            DesfazerMovimento(origem, destino, pecaCapturada);
+                            if (!testeXeque) return false;
+                        }
+                    }
+                }
+            }
+            return true;
         }
 
         private Cor Adversario(Cor cor)

@@ -31,7 +31,7 @@ namespace ConsoleXadrex
                 Console.Write(8 - i + " ");
                 for (int j = 0; j < tab.Colunas; j++)
                 {
-                    if (matriz[i,j])
+                    if (matriz[i, j])
                     {
                         Console.BackgroundColor = alternativeBg;
                     }
@@ -44,22 +44,34 @@ namespace ConsoleXadrex
                 }
                 Console.WriteLine();
             }
-            Console.WriteLine("  A B C D E F G H");            
+            Console.WriteLine("  A B C D E F G H");
         }
 
         public static void ImprimirPartida(PartidaXadrez partida)
-        {            
+        {
             ImprimirTabuleiro(partida.Tabuleiro);
             ImprimirPecasCapturadas(partida);
             Console.WriteLine("\n Turno: " + partida.Turno);
-            Console.WriteLine(" Aguardando... " + partida.JogadorAtual);
-            if (partida.Xeque)
+            if (!partida.Terminada)
+            {
+                Console.WriteLine(" Aguardando... " + partida.JogadorAtual);
+                if (partida.Xeque)
+                {
+                    ConsoleColor aux = Console.ForegroundColor;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\nXEQUE CARAIO!!");
+                    Console.ForegroundColor = aux;
+                }
+            }
+            else
             {
                 ConsoleColor aux = Console.ForegroundColor;
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("\nXEQUE CARAIO!!");
+                Console.WriteLine("\nXEQUEMATE !!");
+                Console.WriteLine("Vencedor jogar: "+ partida.JogadorAtual);
                 Console.ForegroundColor = aux;
             }
+            
         }
 
         public static void ImprimirPecasCapturadas(PartidaXadrez partida)
@@ -78,9 +90,9 @@ namespace ConsoleXadrex
         public static void ImprimirConjunto(HashSet<Peca> pecas)
         {
             Console.Write("[");
-            foreach(Peca x in pecas)
+            foreach (Peca x in pecas)
             {
-                Console.Write(x.ToString()+" ");
+                Console.Write(x.ToString() + " ");
             }
             Console.Write("]");
         }
@@ -88,8 +100,17 @@ namespace ConsoleXadrex
         public static PosicaoXadrez LerPosicaoXadrez()
         {
             string s = Console.ReadLine();
-            char coluna = s[1];
-            int linha = int.Parse(s[0].ToString());
+            char coluna = 'a';
+            int linha = 0;
+            try
+            {
+                coluna = s[1];
+                linha = int.Parse(s[0].ToString());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
             return new PosicaoXadrez(linha, coluna);
         }
 

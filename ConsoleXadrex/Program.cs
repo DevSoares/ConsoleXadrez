@@ -38,6 +38,9 @@ namespace ConsoleXadrex
                         Console.ReadLine();
                     }
                 }
+                Console.Clear();
+                Tela.ImprimirPartida(partida);
+                Console.ReadKey();
             }
             catch (TabuleiroException e)
             {
