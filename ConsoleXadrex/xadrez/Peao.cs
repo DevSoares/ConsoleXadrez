@@ -4,8 +4,10 @@ namespace xadrez
 {
     class Peao : Peca
     {
-        public Peao(Cor cor, Tabuleiro tabuleiro) : base(cor, tabuleiro)
+        private PartidaXadrez partida;
+        public Peao(Cor cor, Tabuleiro tabuleiro, PartidaXadrez partida) : base(cor, tabuleiro)
         {
+            this.partida = partida;
         }
 
         public override string ToString()
@@ -50,6 +52,20 @@ namespace xadrez
                 {
                     matriz[tempPos.Linha, tempPos.Coluna] = true;
                 }
+                // #jogadaespecial en passant
+                if (Posicao.Linha == 3)
+                {
+                    tempPos.SetPosicao(Posicao.Linha, Posicao.Coluna - 1);
+                    if (Tabuleiro.PosicaoValida(tempPos) && ExisteInimigo(tempPos) && Tabuleiro.GetPeca(tempPos) == partida.VulneravelEnPassant)
+                    {
+                        matriz[tempPos.Linha - 1, tempPos.Coluna] = true;
+                    }
+                   tempPos.SetPosicao(Posicao.Linha, Posicao.Coluna + 1);
+                    if (Tabuleiro.PosicaoValida(tempPos) && ExisteInimigo(tempPos) && Tabuleiro.GetPeca(tempPos) == partida.VulneravelEnPassant)
+                    {
+                        matriz[tempPos.Linha - 1, tempPos.Coluna] = true;
+                    }
+                }
             }
             else
             {
@@ -72,6 +88,20 @@ namespace xadrez
                 if (Tabuleiro.PosicaoValida(tempPos) && ExisteInimigo(tempPos))
                 {
                     matriz[tempPos.Linha, tempPos.Coluna] = true;
+                }
+                // #jogadaespecial en passant
+                if (Posicao.Linha == 4)
+                {
+                    tempPos.SetPosicao(Posicao.Linha, Posicao.Coluna - 1);
+                    if (Tabuleiro.PosicaoValida(tempPos) && ExisteInimigo(tempPos) && Tabuleiro.GetPeca(tempPos) == partida.VulneravelEnPassant)
+                    {
+                        matriz[tempPos.Linha + 1, tempPos.Coluna] = true;
+                    }
+                    tempPos.SetPosicao(Posicao.Linha, Posicao.Coluna + 1);
+                    if (Tabuleiro.PosicaoValida(tempPos) && ExisteInimigo(tempPos) && Tabuleiro.GetPeca(tempPos) == partida.VulneravelEnPassant)
+                    {
+                        matriz[tempPos.Linha + 1, tempPos.Coluna] = true;
+                    }
                 }
             }
             return matriz;

@@ -37,6 +37,12 @@ namespace ConsoleXadrex
                         Console.WriteLine(e.Message);
                         Console.ReadLine();
                     }
+                    catch (FormatException e)
+                    {
+                        Console.WriteLine("Inserção de posição inválida:" +
+                            "\nLinha, Coluna : '2a'");
+                        Console.ReadLine();
+                    }
                 }
                 Console.Clear();
                 Tela.ImprimirPartida(partida);
